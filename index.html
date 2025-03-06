@@ -4,7 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>German-Language Music Analysis</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+
+        header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 0.5rem;
+            color: #4a90e2;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #e1f5fe;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        li:hover {
+            background-color: #b3e5fc;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .lyrics {
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        #analysis {
+            padding: 1rem;
+            background-color: #e1f5fe;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -39,6 +123,167 @@
     <footer>
         <p>&copy; 2025 German-Language Music Analysis. All rights reserved.</p>
     </footer>
-    <script src="scripts.js"></script>
+    <script>
+        const songs = [
+            {
+                title: "99 Luftballons",
+                artist: "Nena",
+                lyrics: `
+                    Hast du etwas Zeit für mich?
+                    Dann singe ich ein Lied für dich
+                    Von neunundneunzig Luftballons
+                    Auf ihrem Weg zum Horizont
+
+                    Denkst du vielleicht grad an mich?
+                    Dann singe ich ein Lied für dich
+                    Von neunundneunzig Luftballons
+                    Und dass sowas von sowas kommt
+
+                    Neunundneunzig Luftballons
+                    Auf ihrem Weg zum Horizont
+                    Hielt man für UFOs aus dem All
+                    Darum schickte ein General
+                    'Ne Fliegerstaffel hinterher
+                    Alarm zu geben, wenn es so wär
+                    Dabei war'n da am Horizont
+                    Nur neunundneunzig Luftballons
+                `,
+                translation: `
+                    Do you have some time for me?
+                    Then I'll sing a song for you
+                    About ninety-nine balloons
+                    On their way to the horizon
+
+                    Perhaps you're thinking of me right now?
+                    Then I'll sing a song for you
+                    About ninety-nine balloons
+                    And that such a thing comes from such a thing
+
+                    Ninety-nine balloons
+                    On their way to the horizon
+                    People thought they were UFOs from space
+                    So a general sent
+                    A squadron after them
+                    To raise the alarm if it were so
+                    But there on the horizon were
+                    Only ninety-nine balloons
+                `,
+                analysis: {
+                    wordFrequency: "Luftballons: 8, Horizont: 2, Lied: 2",
+                    themes: "War, Peace, Innocence"
+                }
+            },
+            {
+                title: "Atemlos durch die Nacht",
+                artist: "Helene Fischer",
+                lyrics: `
+                    Wir zieh'n durch die Straßen und die Clubs dieser Stadt
+                    Das ist unsre' Nacht, wie für uns beide gemacht
+                    Oh-oh, oh-oh
+                    Ich schließe meine Augen, lösche jedes Tabu
+                    Küsse auf der Haut, so wie ein Liebestattoo
+                    Oh-oh, oh-oh
+
+                    Was das zwischen uns auch ist
+                    Bilder, die man nie vergisst
+                    Und dein Blick hat mir gezeigt
+                    Das ist unsre' Zeit
+
+                    Atemlos durch die Nacht
+                    Bis ein neuer Tag erwacht
+                    Atemlos, einfach raus
+                    Deine Augen zieh'n mich aus
+                `,
+                translation: `
+                    We walk through the streets and the clubs of this town
+                    This is our night, made for us both
+                    Oh-oh, oh-oh
+                    I close my eyes, erase every taboo
+                    Kisses on the skin, like a love tattoo
+                    Oh-oh, oh-oh
+
+                    Whatever this is between us
+                    Pictures you never forget
+                    And your look showed me
+                    This is our time
+
+                    Breathless through the night
+                    Until a new day awakens
+                    Breathless, simply out
+                    Your eyes pull me out
+                `,
+                analysis: {
+                    wordFrequency: "Atemlos: 4, Nacht: 2, Augen: 2",
+                    themes: "Love, Nightlife, Freedom"
+                }
+            },
+            {
+                title: "Männer",
+                artist: "Herbert Grönemeyer",
+                lyrics: `
+                    Männer nehmen in den Arm
+                    Männer geben Geborgenheit
+                    Männer weinen heimlich
+                    Männer brauchen viel Zärtlichkeit
+
+                    Oh Männer sind so verletzlich
+                    Männer sind auf dieser Welt einfach unersetzlich
+                    Männer kaufen Frauen
+                    Männer stehen ständig unter Strom
+                    Männer baggern wie blöde
+                    Männer lügen am Telefon
+
+                    Männer sind allzeit bereit
+                    Männer bestechen durch ihr Geld und ihre Lässigkeit
+                    Männer haben's schwer, nehmen's leicht
+                    Außen hart und innen ganz weich
+                `,
+                translation: `
+                    Men take you in their arms
+                    Men give security
+                    Men cry secretly
+                    Men need a lot of tenderness
+
+                    Oh men are so vulnerable
+                    Men are simply indispensable in this world
+                    Men buy women
+                    Men are constantly under stress
+                    Men dig like crazy
+                    Men lie on the phone
+
+                    Men are always ready
+                    Men are persuasive with their money and their casualness
+                    Men have it tough, take it easy
+                    Hard on the outside and soft on the inside
+                `,
+                analysis: {
+                    wordFrequency: "Männer: 10, Frauen: 2, Welt: 2",
+                    themes: "Gender Roles, Masculinity, Vulnerability"
+                }
+            }
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const songList = document.getElementById("songs");
+            const songTitle = document.getElementById("song-title");
+            const lyrics = document.getElementById("lyrics");
+            const translation = document.getElementById("translation");
+            const wordFrequency = document.getElementById("word-frequency");
+            const themes = document.getElementById("themes");
+
+            songs.forEach((song, index) => {
+                const li = document.createElement("li");
+                li.textContent = `${song.title} by ${song.artist}`;
+                li.addEventListener("click", () => {
+                    songTitle.textContent = song.title;
+                    lyrics.textContent = song.lyrics;
+                    translation.textContent = song.translation;
+                    wordFrequency.textContent = `Word Frequency: ${song.analysis.wordFrequency}`;
+                    themes.textContent = `Themes: ${song.analysis.themes}`;
+                });
+                songList.appendChild(li);
+            });
+        });
+    </script>
 </body>
 </html>
